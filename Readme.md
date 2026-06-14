@@ -14,7 +14,7 @@ Yes, to be honest these wont perform better than what you can access from your b
 
 
 ## Model File : 
-This file contains the code to load the local LLM, even though I later changes it to using Gemini 2.5-flash later using API calls, the code does not change much. 
+This file contains the code to load the local LLM, even though I later changed it to using Gemini 2.5-flash later using API calls, the code does not change much. 
 
 ## Tools File : 
 This file contains the necessary tools required to be called and used by the model. We have used native tool calling. 
@@ -33,3 +33,10 @@ This will serve as a backup file for the whole conversation in case of accidenta
 
 
 ##         5. Other Tools : Will be Added
+
+
+## Main File : 
+This file contains the main code to be implemented, all the other files are imported and user interaction takes place here.
+
+## Prompt Template : 
+This file contains the prompt to be passed as the system prompt to SystemMessages to the model. It contains role of the model, what is it supposed to do and the guidelines it is supposed to follow to improve the output, this can be updates as per the need. 

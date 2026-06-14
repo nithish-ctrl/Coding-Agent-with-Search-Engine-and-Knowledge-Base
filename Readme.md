@@ -21,3 +21,17 @@ This file contains the necessary tools required to be called and used by the mod
 The available tools are : 
 ###        Search Engine Tool : 
 Using DuckDuckGo to access information from internet and also obtain as much privacy as possible.  
+
+###        Knowledge Base Tool : 
+Currently wikipedia is used as knowledge base, honestly there is very high chance that the model is already trained on this data. But this tool can be substituted with other data which could be retrieved and a potential integration of RAG application and minimum hallucination. 
+
+###        Coding Agent Tool : 
+
+
+
+
+###        Result Log Tool : 
+This will serve as a backup file for the whole conversation in case of accidental data deletion or other issues. This can also be used for feedback loops leading to potential improvements. 
+
+
+##         Other Tools : Will be Added

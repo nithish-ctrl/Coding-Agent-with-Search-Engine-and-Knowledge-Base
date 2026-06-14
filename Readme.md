@@ -32,7 +32,7 @@ This will serve as a basic coding tool with debugging capabilities, maybe also h
 This will serve as a backup file for the whole conversation in case of accidental data deletion or other issues. This can also be used for feedback loops leading to potential improvements. 
 
 
-##         5. Other Tools :
+###        5. Other Tools :
 Just a place holder, other tools will be added. 
 
 ## Main File : 

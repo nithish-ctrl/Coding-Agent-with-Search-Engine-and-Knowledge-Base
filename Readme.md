@@ -32,8 +32,8 @@ This will serve as a basic coding tool with debugging capabilities, maybe also h
 This will serve as a backup file for the whole conversation in case of accidental data deletion or other issues. This can also be used for feedback loops leading to potential improvements. 
 
 
-##         5. Other Tools : Will be Added
-Just the place holder.
+##         5. Other Tools :
+Just a place holder, other tools will be added. 
 
 ## Main File : 
 This file contains the main code to be implemented, all the other files are imported and user interaction takes place here.

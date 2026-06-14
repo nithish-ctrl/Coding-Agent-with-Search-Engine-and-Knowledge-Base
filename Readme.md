@@ -26,9 +26,7 @@ Using DuckDuckGo to access information from internet and also obtain as much pri
 Currently wikipedia is used as knowledge base, honestly there is very high chance that the model is already trained on this data. But this tool can be substituted with other data which could be retrieved and a potential integration of RAG application and minimum hallucination. 
 
 ###      3. Coding Agent Tool : 
-
-
-
+This will serve as a basic coding tool with debugging capabilities, maybe also help in building small projects.
 
 ###       4. Result Log Tool : 
 This will serve as a backup file for the whole conversation in case of accidental data deletion or other issues. This can also be used for feedback loops leading to potential improvements. 

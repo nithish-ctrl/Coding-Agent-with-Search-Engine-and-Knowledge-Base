@@ -1,5 +1,5 @@
 from langchain.tools import tool
-#from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchResults
+from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper, DuckDuckGoSearchAPIWrapper
 
 
@@ -19,12 +19,23 @@ def Search_engine(query : str)-> str:
     return search.run(query)
     
 @tool 
-def wiki_knowledge_base():
+def wiki_knowledge_base(query : str) -> str:
     """
+    Search the knowledge base for the information,
+    Use the tool whenever : 
+    - To confirm the response is correct.
+    - To extract relaible information and facts.
+    - The answer is not likely in the training data.
+    Args : 
+        query : obtimised search keywords
+    """
+    wiki_wrapper = WikipediaAPIWrapper(
+        top_k_results=2,
+        doc_content_chars_max=500)
     
-    """
-
-    return 
+    wiki_tool = WikipediaQueryRun(api_wrapper=wiki_wrapper)
+    
+    return wiki_tool.run(query)
 
 @tool
 def results_log():
@@ -36,6 +47,7 @@ def results_log():
 @tool 
 def Coding_agent():
     """
+
     """
     return 
   

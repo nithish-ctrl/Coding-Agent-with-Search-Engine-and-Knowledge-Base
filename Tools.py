@@ -29,13 +29,20 @@ def wiki_knowledge_base(query : str) -> str:
     Args : 
         query : obtimised search keywords
     """
+    if not query or not query.strip():
+        return "Error: The search query provided was empty. Please provide a valid topic."
+    
     wiki_wrapper = WikipediaAPIWrapper(
+        wiki_client=None,   # Just to shut up pylance
         top_k_results=2,
         doc_content_chars_max=500)
     
     wiki_tool = WikipediaQueryRun(api_wrapper=wiki_wrapper)
     
-    return wiki_tool.run(query)
+    try : 
+        return wiki_tool.run(query)
+    except Exception as e :
+        return f'Wikipedia Knowledge Base has faced the error {e}'
 
 @tool
 def results_log():

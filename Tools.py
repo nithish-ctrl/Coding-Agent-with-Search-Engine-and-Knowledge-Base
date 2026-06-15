@@ -45,11 +45,26 @@ def wiki_knowledge_base(query : str) -> str:
         return f'Wikipedia Knowledge Base has faced the error {e}'
 
 @tool
-def results_log():
+def results_log(logs : str, filename = "Converation_logs.md"):
     """
+    This tool is used to save the user query and the final response in the logs. Make sure to label
+    the user input as "User" and the AI final response as "LLM"
     
+    Args : 
+        logs : The user query and the final response is to be passed in here for labeling.
+        filename : This is the filename for the logs to be saved, check if file named "Conversation_logs.txt"
+        already exists and  update it or else create a new one with the name and save it there.
     """
-    return 
+    if filename.endswith(".md") : pass
+    else : filename = filename + ".md"
+
+    try : 
+        with open(filename, "+a") as log_file: 
+            log_file.write(logs)
+        return f'The conversation log has been saved in {filename}'
+    
+    except Exception as e :
+        return f'Conversation logs were not updated due {e}'
 
 @tool 
 def Coding_agent():

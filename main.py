@@ -2,16 +2,17 @@ from typing import TypedDict, Sequence, Annotated
 from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage, AIMessage
 from langgraph.graph import StateGraph, START, END, add_messages
 from langgraph.prebuilt import ToolNode
-from Tools import Search_engine
+from Tools import Search_engine, wiki_knowledge_base
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
+# from langchain_google_genai import ChatGoogleGenerativeAI
 from Prompt_template import System_prompt
+from langchain_mistralai import ChatMistralAI
 
 
 load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
-Tools = [Search_engine]
+llm = ChatMistralAI(model_name="mistral-medium-3-5")
+Tools = [Search_engine, wiki_knowledge_base]
 llm = llm.bind_tools(tools=Tools)
 
 class AgentState(TypedDict):
@@ -63,28 +64,30 @@ agent = graph.compile()
 
 def run_agent():
     print("______________________________________________________________________________")
-    inputs = {"messages": [("user", "Who is the current chief minister of Tamil Nadu?")]}
+    user_input = input("Enter the prompt : ")
+    inputs = {"messages": [("user", user_input)]}
     
     # 1. Switch stream_mode to "updates" to isolate node actions
     for output in agent.stream(inputs, stream_mode="updates"):  # type: ignore
         
-        # 2. Check if the "agent" node just ran (Gemini thinking)
+        # 2. Check if the "agent" node just ran (LLM thinking)
         if "AgentCall" in output:
             message = output["AgentCall"]["messages"][0]
             
             # If Gemini is calling DuckDuckGo, print the query cleanly
             if message.tool_calls:
                 for tool_call in message.tool_calls:
-                    print(f"\n[Gemini]: Searching DuckDuckGo for: \"{tool_call['args'].get('query')}\"")
+                    print(f"\n[LLM]: Searching Tools for: \"{tool_call['args'].get('query')}\"")
             
             # If Gemini has synthesized the search results into a final answer
             elif message.content:
-                print(f"\n[Gemini]: {message.content[0]['text']}")
+                #print(f"\n[Gemini]: {message.content[0]['text']}")
+                print(f'LLM : {message.content}')
         
         # 3. Check if the "tools" node just ran (DuckDuckGo execution)
         elif "ToolNode" in output:
             tool_message = output["ToolNode"]["messages"][0]
-            print(f"\n[DuckDuckGo]: Found search results. Sending data back to Gemini...")
+            print(f"\n[Tools]: Found search results. Sending data back to LLM...")
     print("____________________________________________________________________________________")
 
 if __name__ == "__main__":

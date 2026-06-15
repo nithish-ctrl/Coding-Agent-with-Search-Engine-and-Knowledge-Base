@@ -45,7 +45,7 @@ def wiki_knowledge_base(query : str) -> str:
         return f'Wikipedia Knowledge Base has faced the error {e}'
 
 @tool
-def results_log(logs : str, filename = "Converation_logs.md"):
+def results_log(logs : str, filename = "Conversation_logs.md"):
     """
     This tool is used to save the user query and the final response in the logs. Make sure to label
     the user input as "User" and the AI final response as "LLM"

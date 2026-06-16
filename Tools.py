@@ -17,7 +17,8 @@ def Search_engine(query : str)-> str:
     """
     search = DuckDuckGoSearchAPIWrapper(max_results=3)
     return search.run(query)
-    
+
+
 @tool 
 def wiki_knowledge_base(query : str) -> str:
     """
@@ -44,6 +45,7 @@ def wiki_knowledge_base(query : str) -> str:
     except Exception as e :
         return f'Wikipedia Knowledge Base has faced the error {e}'
 
+
 @tool
 def results_log(logs : str, filename = "Conversation_logs.md"):
     """
@@ -66,11 +68,79 @@ def results_log(logs : str, filename = "Conversation_logs.md"):
     except Exception as e :
         return f'Conversation logs were not updated due {e}'
 
-@tool 
-def Coding_agent():
+@tool
+def Calender_tool():  # 
     """
-
+    This tool 
     """
     return 
-  
+
+
+vault_filepath = ""
+
+@tool
+def Notes_tool(filename : str, content : str, filepath = vault_filepath): # Connected with obsidian vault
+    """
+    This tool is make notes out of a topic that is asked. You can use the search and knowledge base tool
+    to collect content for the notes to me made. Check if a file with name given exists or else make one.
+
+    Args : 
+        - filename: This is the filename for the notes content to be saved, use the filename given by user for this
+        or else choose the best keyword as the filename.
+        - content: This is the content that is searched using search tool or extracted from knowledge base tool.
+                    This will be written in the notes file.
+        - filepath: This is the filepath for the valult of the obsidian for the notes to be created.
+    """
+
+    filename = filename if filename.endswith(".md") else filename + ".md"
+    path_with_name = filepath + filename
+    try : 
+        with open(path_with_name, "+a") as notes_file:
+            notes_file.write(content)
+        return f'Notes has been created in your obsidian vault as {filename}'
+    except Exception as e:
+        return f'Notes have not been created due to {e}'
+
+@tool 
+def To_do():  # Connected with obsidian
+    """
+    
+    """
+    return
+
+@tool
+def Messenger_tool():
+    """
+    
+    """
+    return 
+
+@tool
+def Channels_tool():
+    """
+    allows users to create groups called channels to discuss specific subjects. This 
+    helps users communicate with their teammates and share important files.
+    """
+    return 
+
+@tool
+def Resume_Analyzer():
+    """
+    """
+    return
+
+def Drafter():
+    """
+    This tool is used to make drafts of content. This could be email 
+    """
+    return
+
+@tool 
+def Coding_tool():
+    """
+    
+    """
+    return 
+
+
 

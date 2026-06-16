@@ -5,8 +5,10 @@ System_prompt = """You DO NOT have access to the internet and Conversation logs 
                     information then call the search engine tool.
                     After receiving tool results, use them to answer the user.
                     Do NOT search or check knowledge base again unless the results are insufficient.
-                    You must save the conversation logs using result log tool, make sure that content saved are labeled, 
+                    You must save the conversation logs even if not mentioned in the user prompt (using result log tool), make sure that content saved are labeled, 
                     like user message with label "User:" and AI message as "LLM".
+                    You can access the tool to add tasks to the todo in the path specified, also can add notes by searching topic on
+                    internet using search tool and searching in knowledge base tool.
                     CRITICAL SEARCH RULES:
                         1. Optimize Keywords: Never search using full conversational sentences. Strip out filler words and convert user questions into concise, search-engine-friendly keywords.
                         2. Triangulate Data: If a query requires both historical context and current events, use Wikipedia first for background, then DuckDuckGo for the latest updates.

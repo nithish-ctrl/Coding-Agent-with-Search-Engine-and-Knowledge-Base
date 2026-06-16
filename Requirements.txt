@@ -1,0 +1,6 @@
+llama-cpp
+python
+langchain
+langgraph
+wikipedia
+mistral_ai

@@ -2,7 +2,6 @@ from langchain.tools import tool
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper, DuckDuckGoSearchAPIWrapper
 
-
 @tool
 def Search_engine(query : str)-> str:
     """
@@ -107,7 +106,7 @@ To_Do_vault_path = r"D:\Note WorkFlow\Workflow\Work List.md"
 @tool 
 def To_do(task : str, Action : str, filepath = To_Do_vault_path):  # Connected with obsidian
     """
-    This tool is to add or delete tasks to my To Do list in my obsisidan vault. The 
+    This tool is to add or delete tasks to my To Do list in my obsisidan vault. 
 
     Args : 
         - task : This is the name of the task to be added or removed from the To Do list. 
@@ -142,11 +141,30 @@ def To_do(task : str, Action : str, filepath = To_Do_vault_path):  # Connected w
         return f'{Action} Action failed due to {e}'
 
 @tool 
-def Notes_from_Documents():  # Connected with Obsidian
+def Notes_from_Documents(filename : str, document_name : str, filepath = vault_filepath):  # Connected with Obsidian
     """
+    This tool is make notes from documents uploaded to it by the user. Extraction of the content, keywords
+    are made. Then along with the content, the keywords are searched and made notes using Notes_tool. 
+    The file is also summarised in the end. The content is present in the document_name given by the user and 
+    the extracted text has to be written in the filename in the filepath specified.
+
+    Args : 
+        - filepath : This is the filepath of the vault on which the extracted text, notes and summary is to be updated.
+        - filename : This is the name of the file to be saved in the vault.
+        - document_name : This is the name of the document from which the text will be extracted from, this is passed by the user.
+    """
+    import fitz
+    filename = filename if filename.endswith(".md") else filename + ".md"
+    doc = fitz.open(document_name)
+    doc_content = "\n".join([str(page.get_text()) for page in doc]) 
+    filename_with_vault = filepath + "/" + filename 
+    try :
+        with open(filename_with_vault, "r+") as content : 
+            content.write(doc_content)
+        return f'The content is extracted and {filename} is created in the vault folder.'
+    except Exception as e : 
+        return f'The content extraction from the document failed due to {e}.'
     
-    """
-    return
 
 @tool
 def Messenger_tool():

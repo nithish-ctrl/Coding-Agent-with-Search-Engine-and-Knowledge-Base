@@ -36,10 +36,10 @@ This will serve as a backup file for the whole conversation in case of accidenta
 Just a place holder, other tools will be added. 
 
 ###        6. Notes Tool :
-This tool will basically let the LLM search the internet about the topic given and then makes note file in my obsidian vault about the topic.
+This tool will basically let the LLM search the internet about the topic given and then make notes in my obsidian vault about the topic.
 
 ###        7. To Do Tool :
-This tool can add or remove the tasks in my Todo file from my obsidian vault.
+This tool can add or remove tasks to and from my Todo file from my obsidian vault.
 
 ###        8. Notes from Document Tool :
 This tool can open a pdf document and extract the text from it and paste the text in obsidian vault. 

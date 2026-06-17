@@ -1,6 +1,7 @@
 from langchain.tools import tool
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper, DuckDuckGoSearchAPIWrapper
+import os
 
 @tool
 def Search_engine(query : str)-> str:
@@ -140,28 +141,35 @@ def To_do(task : str, Action : str, filepath = To_Do_vault_path):  # Connected w
     except Exception as e : 
         return f'{Action} Action failed due to {e}'
 
+
+doc_dir = "C:/Users/Nithish/Agents From Scratch Using Langgraph/Search Engine Agent"
 @tool 
-def Notes_from_Documents(filename : str, document_name : str, filepath = vault_filepath):  # Connected with Obsidian
+def Notes_from_Documents(notes_filename : str, document_name : str, vault_path = vault_filepath, document_dir = doc_dir):  # Connected with Obsidian
     """
-    This tool is make notes from documents uploaded to it by the user. Extraction of the content, keywords
-    are made. Then along with the content, the keywords are searched and made notes using Notes_tool. 
-    The file is also summarised in the end. The content is present in the document_name given by the user and 
-    the extracted text has to be written in the filename in the filepath specified.
+    This tool is make notes from documents. Extraction of the content, keywords are made.
+    Then along with the content, the keywords are searched and made notes using Notes_tool. 
+    The file is also summarised in the end. 
+    Document to be read is present in the document_dir with name as document_name.
 
     Args : 
-        - filepath : This is the filepath of the vault on which the extracted text, notes and summary is to be updated.
-        - filename : This is the name of the file to be saved in the vault.
-        - document_name : This is the name of the document from which the text will be extracted from, this is passed by the user.
+        - vault_path : This is the filepath of the vault on which the extracted text, notes and summary is to be updated.
+        - notes_filename: This is the filename for the notes content to be saved, use the filename given by user for this
+                    or else choose the best keyword as the filename.
+        - document_name : This is the name of the document from which the text will be extracted from, this is passed by the user exactly.
+                          No need to ask the user for confirmation, can use it directly.
+        - document_dir : This is the dirctory of the file to be read.
     """
+
     import fitz
-    filename = filename if filename.endswith(".md") else filename + ".md"
-    doc = fitz.open(document_name)
+    notes_filename = notes_filename if notes_filename.endswith(".md") else notes_filename + ".md"
+    full_doc_path = os.path.join(document_dir, document_name)
+    doc = fitz.open(full_doc_path)
     doc_content = "\n".join([str(page.get_text()) for page in doc]) 
-    filename_with_vault = filepath + "/" + filename 
+    filename_with_vault = os.path.join(vault_path, notes_filename) 
     try :
-        with open(filename_with_vault, "r+") as content : 
+        with open(filename_with_vault, "w+") as content : 
             content.write(doc_content)
-        return f'The content is extracted and {filename} is created in the vault folder.'
+        return f'The content is extracted and {notes_filename} is created with notes in the vault folder.'
     except Exception as e : 
         return f'The content extraction from the document failed due to {e}.'
     

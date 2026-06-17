@@ -36,16 +36,16 @@ This will serve as a backup file for the whole conversation in case of accidenta
 Just a place holder, other tools will be added. 
 
 ###        6. Notes Tool :
-Just a place holder, other tools will be added. 
+This tool will basically let the LLM search the internet about the topic given and then makes note file in my obsidian vault about the topic.
 
 ###        7. To Do Tool :
-Just a place holder, other tools will be added. 
+This tool can add or remove the tasks in my Todo file from my obsidian vault.
 
 ###        8. Notes from Document Tool :
-Just a place holder, other tools will be added. 
+This tool can open a pdf document and extract the text from it and paste the text in obsidian vault. 
 
 ###        9. Resume Analyzer Tool : 
-Just a place holder.
+This tool takes the resume file and Job description file does a basic keyword + Semantic similarity search and gives a similarity score, trying it also give suggestions about what to improve. 
 
 ###        10. Jarvis Mode Tool : 
 Just a place holder

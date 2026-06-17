@@ -1,6 +1,9 @@
 llama-cpp
+torch
 python
 langchain
 langgraph
 wikipedia
 mistral_ai
+pypdf
+pymupdf

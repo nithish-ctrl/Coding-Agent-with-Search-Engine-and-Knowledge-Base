@@ -1,6 +1,6 @@
-# Building a Search engine Agent using Langgraph 
+# Multi Purpose AI Agent using Langgraph 
 
-This repository contains concept and code for building Daily use AI Agents using langgraph and langchain from absolute basics.
+This repository contains concept and code for building AI Agents using langgraph and langchain from absolute basics.
 
 ## Why do I need to use these ? Can't I just access them in my browser ? 
 Yes, to be honest these wont perform better than what you can access from your browser. This is not a production level Project. This is a fun project made with intention of playing around langgraph and langchain. Its a really fun project to take up. 
@@ -11,7 +11,8 @@ Yes, to be honest these wont perform better than what you can access from your b
 ### 2. Tools
 ### 3. Main
 ### 4. Prompt Template
-
+### 5. Requirements
+### 6. Conversation Logs
 
 ## Model File : 
 This file contains the code to load the local LLM, even though I later changed it to using Gemini 2.5-flash later using API calls, the code does not change much. 
@@ -31,21 +32,38 @@ This will serve as a basic coding tool with debugging capabilities, maybe also h
 ###       4. Result Log Tool : 
 This will serve as a backup file for the whole conversation in case of accidental data deletion or other issues. This can also be used for feedback loops leading to potential improvements. 
 
-
 ###        5. Calender Tool :
 Just a place holder, other tools will be added. 
 
 ###        6. Notes Tool :
 Just a place holder, other tools will be added. 
 
-###        7. To Do Tools :
+###        7. To Do Tool :
 Just a place holder, other tools will be added. 
 
-###        8. Other Tools :
+###        8. Notes from Document Tool :
 Just a place holder, other tools will be added. 
+
+###        9. Resume Analyzer Tool : 
+Just a place holder.
+
+###        10. Jarvis Mode Tool : 
+Just a place holder
+
+##         11. Transformer Mode Tool : 
+Just a place holder
+
+##         12. Yoda Mode Tool : 
+Just a place holder.
 
 ## Main File : 
 This file contains the main code to be implemented, all the other files are imported and user interaction takes place here.
 
 ## Prompt Template : 
 This file contains the prompt to be passed as the system prompt to SystemMessages to the model. It contains role of the model, what is it supposed to do and the guidelines it is supposed to follow to improve the output, this can be updates as per the need. 
+
+## Requirement file : 
+This file contains all the dependencies and libraries required to be installed. Actually I might have forgotten to add one or two, so do let me if that is so.
+
+## Conversation Logs : 
+This file contains the conversation logs, this file is updated by the tool results_log after every prompt and its response, since I have not updated the prompt-response loop yet. 

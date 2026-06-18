@@ -62,21 +62,34 @@ def results_log(logs : str, filename = "Conversation_logs.md"):
 
     try : 
         with open(filename, "+a") as log_file: 
-            log_file.write(logs)
+            log_file.writelines(logs)
         return f'The conversation log has been saved in {filename}'
     
     except Exception as e :
         return f'Conversation logs were not updated due {e}'
 
 @tool
-def Calender_tool():  # 
+def Clock_tool(use : str, duration : str, purpose : str):  #  
     """
-    This tool 
+    This tool can set up a timer, reminder or a pomodoro time in case of productive mode according
+    to the user needs.
+
+    Args : 
+        - use :
+            - Timer : 
+            - Reminder
+            - Pomodoro-Timer : 
+        
+        - duration : This is the duration in case of the timer and pomodoro timer and is the
+                     time to set the reminder in case of reminder.
+
+        - purpose : This could be a purpose of reminder, the purpose of time or the purpose for pomodoro-timer.
+
     """
     return 
 
 
-vault_filepath = r"d:\Note WorkFlow\Workflow"
+vault_filepath = r"D:/Inputs for Agent"
 
 @tool
 def Notes_tool(filename : str, content : str, filepath = vault_filepath): # Connected with obsidian vault
@@ -227,6 +240,19 @@ def Resume_Analyzer(Resume_name : str, Job_desc_name : str, vault_filename : str
     print(f'Similarity Score : {similarity_score}')
 
     return similarity_score, vault_filename, vault_path, resume_text, JD_text, f'The similarity score is {similarity_score}'
+
+@tool
+def Productivity_mode(work : str, duration : str, iteration : int):
+    """
+    This tool is set up everything for the user to work lock in and work productively.
+
+    Args : 
+        - Work : This is the work to be added to the to do list.
+        - duration : 
+        - iteration : 
+    """
+    return
+
 
 @tool
 def Drafter():

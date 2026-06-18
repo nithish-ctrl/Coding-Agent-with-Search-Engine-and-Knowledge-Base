@@ -242,14 +242,16 @@ def Resume_Analyzer(Resume_name : str, Job_desc_name : str, vault_filename : str
     return similarity_score, vault_filename, vault_path, resume_text, JD_text, f'The similarity score is {similarity_score}'
 
 @tool
-def Productivity_mode(work : str, duration : str, iteration : int):
+def Productivity_mode(work : str, duration : str, iteration : int, break_duration : str):
     """
-    This tool is set up everything for the user to work lock in and work productively.
+    This tool is set up everything for the user to work lock in and work productively. This productivity 
+    periods works iteratively with a duration for each period and a break in between them.
 
     Args : 
         - Work : This is the work to be added to the to do list.
-        - duration : 
-        - iteration : 
+        - duration : The duration of one productivity period.
+        - iteration : Number of iterations of this productivity period.
+        - break_duration : The duration of break between each productivity period.
     """
     return
 

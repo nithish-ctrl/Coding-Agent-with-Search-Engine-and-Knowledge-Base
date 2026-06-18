@@ -245,7 +245,13 @@ def Resume_Analyzer(Resume_name : str, Job_desc_name : str, vault_filename : str
 def Productivity_mode(work : str, duration : str, iteration : int, break_duration : str):
     """
     This tool is set up everything for the user to work lock in and work productively. This productivity 
-    periods works iteratively with a duration for each period and a break in between them.
+    periods works iteratively with a duration for each period and a break in between them. The work is to be added to the todo list 
+    using the Todo tool. Then the clock tool is to be called iteratively with breaks according to the number of sessions and duration
+    period with breaks is wanted by the user. 
+    The iterations will be the number of pomodoro sessions the user wants to focus for.
+    The duration is the length of each pomodoro session.
+    Break duration will a timer of that duration for break in between the pomodoro sessions.
+    All these have to implemented using the clock tool.
 
     Args : 
         - Work : This is the work to be added to the to do list.

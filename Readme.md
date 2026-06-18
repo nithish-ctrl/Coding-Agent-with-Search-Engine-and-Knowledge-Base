@@ -47,14 +47,20 @@ This tool can open a pdf document and extract the text from it and paste the tex
 ###        9. Resume Analyzer Tool : 
 This tool takes the resume file and Job description file does a basic keyword + Semantic similarity search and gives a similarity score, trying it also give suggestions about what to improve. 
 
-###        10. Jarvis Mode Tool : 
-Just a place holder
+###        10. Talk back Mode : 
+This tool can make the LLM talk with the user instead of taking ang giving response through the terminal as text. Bascially like Alexa, 
+bixby or Jarvis (delulu).
+There are various available voices in this which would like to call as the voices of goats :
+####                    Jarvis : 
+                            Yes, voice of the goat "Jarvis". 
+####                    Optimus Prime :
+                            Autobots, roll out.
+####                    Yoda :
+                            Im not sure I could switch the words like how yoda talks but im sure i can get Yoda's voice atleast. Hoping for the best.
+####                    Johnny Lawernce : 
+                            This is my favourite character from the series "Cobra Kai" along with Miguel Diaz ofc, I will try my best to bring his unique way of answering to questions, Well QUIET !!!!!...No promises and No Mercy. 
+                            Cobra Kai never dies. 
 
-##         11. Transformer Mode Tool : 
-Just a place holder
-
-##         12. Yoda Mode Tool : 
-Just a place holder.
 
 ## Main File : 
 This file contains the main code to be implemented, all the other files are imported and user interaction takes place here.

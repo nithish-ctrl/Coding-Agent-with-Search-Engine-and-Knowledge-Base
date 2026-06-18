@@ -181,7 +181,8 @@ def Resume_Analyzer(Resume_name : str, Job_desc_name : str, vault_filename : str
     """
     This tool is to compare the resume and job decription documents and give suggestions about them and 
     improvements to the user about what they should focus on to prepare for the job specified in the job
-    description. The result will be the similarity score, vault_filename, vaultpath which you will pass to the notes file to update everything to the vault.
+    description. The result will be the similarity score, vault_filename, vaultpath, resume_text, JD_text.
+    You must summarize the text from resume and text from JD and pass it to the notes_tool. 
     Make sure to add it with labels, 
     Summary of the resume "Resume summary", Summary of the JD as "JD Summary" and then Similarity score.
     Args : 
@@ -217,15 +218,15 @@ def Resume_Analyzer(Resume_name : str, Job_desc_name : str, vault_filename : str
     fuzz_similarity = fuzz.ratio(resume_text, JD_text)
 
     model = SentenceTransformer('all-MiniLM-L6-v2')
-    resume_encoding = model.encode(resume_text, convert_to_tensor=True)
-    JD_encoding = model.encode(JD_text, convert_to_tensor=True)
+    resume_embeddings = model.encode(resume_text, convert_to_tensor=True)
+    JD_embeddings = model.encode(JD_text, convert_to_tensor=True)
     
-    semantic_similarity = util.cos_sim(resume_encoding, JD_encoding)
+    semantic_similarity = util.cos_sim(resume_embeddings, JD_embeddings)
 
     similarity_score = 0.1 * fuzz_similarity + 0.9 * semantic_similarity
     print(f'Similarity Score : {similarity_score}')
 
-    return similarity_score, vault_filename, vault_path, f'The similarity score is {similarity_score}'
+    return similarity_score, vault_filename, vault_path, resume_text, JD_text, f'The similarity score is {similarity_score}'
 
 @tool
 def Drafter():
@@ -240,27 +241,40 @@ def Drafter():
     """
     return
 
-def Jarvis_mode():
+def Talkback_mode(response : str, Goat : str, ):
     """
+    This tool is basically to turn on Speech mode so the conversation with the LLM can take place using Speech. There are few voices the LLM model can
+    choose from to talk back to the user with the response to the query. The voice of goat argument will take care of that.
 
 
     Args : 
-        - 
-        - 
+        - response : This is the response that the model want to be converted to Audio to be played back to the user. This is 
+        - Voice_of_Goat : Either of the four given names should be passed in as the input.
+                - Jarvis : 
+                - Optimus Prime : 
+                - Johnny Lawrence : 
+                - Yoda : 
         - 
     """
-    return 
 
-def tranformers_mode() : # Either with Jarvis or separately.
-    """
-    
-    """
     return 
 
 
 @tool
-def Messenger_tool():
+def Messenger_tool(message : str, platform : str, receiver_details : str):
     """
+    This tool will send messages via platforms such as telegram and email, the platform is to and receiver details is to be extracted from
+    the user's prompt to the LLM. The sender's details is already coded into the tool, LLM does not have to ask for sender details to the User.
+
+    Args : 
+        - message : This is the message to be sent to the receiver through any of the platforms mentioned.
+        - platform : This is the platform through which the message will be sent. 
+            - email -  
+            - telegram - 
+            - whatsapp - 
+            - sms - 
+        - receiver_details : This contains the receiver's details. This could be an email address in case of an email platform, an number
+                             in case of sms or whatsapp or telegram platform.
     
     """
     return 

@@ -59,7 +59,7 @@ There are various available voices in this which would like to call as the voice
 ####                    Yoda :
                             Im not sure I could switch the words like how yoda talks but im sure i can get Yoda's voice atleast. Hoping for the best.
 ####                    Johnny Lawernce : 
-                            This is my favourite character from the series "Cobra Kai" along with Miguel Diaz ofc, I will try my best to bring his unique way of answering to questions, Well QUIET !!!!!...No promises and No Mercy. 
+                            This is my favourite character from the series "Cobra Kai" along with Miguel Diaz ofc, I will try my best to bring his unique way of answering to questions, Well.. QUIET !!!!!...No promises and No Mercy. 
                             Cobra Kai never dies. 
 
 ###        11. Productivity Mode Tool :

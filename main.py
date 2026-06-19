@@ -66,28 +66,24 @@ def run_agent():
     print("______________________________________________________________________________________________________________")
     user_input = input("Enter the prompt : ")
     inputs = {"messages": [("user", user_input)]}
-    
-    # 1. Switch stream_mode to "updates" to isolate node actions
+
     for output in agent.stream(inputs, stream_mode="updates"):  # type: ignore
         
-        # 2. Check if the "agent" node just ran (LLM thinking)
         if "AgentCall" in output:
             message = output["AgentCall"]["messages"][0]
             
-            # If LLM is calling DuckDuckGo, print the query cleanly
             if message.tool_calls:
                 for tool_call in message.tool_calls:
                     print(f"\n[LLM]: Searching Tools for: \"{tool_call['args'].get('query')}\"")
             
-            # If LLM has synthesized the search results into a final answer
             elif message.content:
                 #print(f"\n[LLM]: {message.content[0]['text']}") This is extract the text from Google Gemini Model
                 print(f'LLM : {message.content}')
         
-        # 3. Check if the "tools" node just ran (DuckDuckGo execution)
         elif "ToolNode" in output:
             tool_message = output["ToolNode"]["messages"][0]
             print(f"\n[Tools]: Found search results. Sending data back to LLM...")
+    
     print("___________________________________________________________________________________________________________________")
 
 if __name__ == "__main__":

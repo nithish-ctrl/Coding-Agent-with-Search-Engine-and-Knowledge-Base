@@ -30,7 +30,7 @@ def Process_agent(state : AgentState) -> AgentState:
                 state["messages"],
                 strategy = "last",
                 token_counter="approximate",
-                max_tokens=1000,
+                max_tokens=6000,
                 start_on="human",
                 end_on=("human", "tool")
                 )

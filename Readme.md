@@ -69,6 +69,9 @@ This tool is used to help the user with productive tasks, a number of pomodoro s
 The work will be added to the task list and will be crossed out at the end of session if the whole period has been reached, or else it
 remains in the todo list. The clock tool will be called to make these sessions and the todo tool for adding the removing the tasks. 
 
+###        12. Make Your Own Tool : 
+This tool is basically designed to make the LLM design its own tool as the Use wants. The tool is directly appended into the Tools.py file which has all the tools. For now, we will have to manually include the new tool in main.py file and include it in the list of tools to be binded to the LLM, but I will automate later I guess. But right now, giving complete access felt like its not right. The fact that I have manually add few things actually gives me room to check the tool, which I consider important so maybe I wont automate, only time can tell. 
+
 ## Main File : 
 This file contains the main code to be implemented, all the other files are imported and user interaction takes place here.
 

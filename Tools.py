@@ -365,7 +365,7 @@ def Channels_tool():
     return 
 
 
-tool_filepath = r"C:/Users/Nithish/Agents From Scratch Using Langgraph/Search Engine Agent/tool_check.py"
+tool_filepath = r"C:/Users/Nithish/Agents From Scratch Using Langgraph/Search Engine Agent/Tools.py"
 
 @tool 
 def MakeYourOwn_tool(docstring : str, name : str, code : str, tool_filepath = tool_filepath):
@@ -384,19 +384,13 @@ def MakeYourOwn_tool(docstring : str, name : str, code : str, tool_filepath = to
         - tool_filepath : This is the filepath where the tool code is to be added to.
     
     """
-    #tool_filepath_with_name = os.path.join(tool_filepath, name)
     name = name + "_tool"
-    #tool_template = 
-    f"""
-    @tool
-    def {name}()
-    """
+    # A template could be used to build custom tool.
     with open(tool_filepath, "+a") as toolfile : 
 
         toolfile.writelines("\n@tool\n")
         toolfile.writelines(code)
         toolfile.writelines("\n")
     return print(f'The tool is coded into the itended python file with the name {name}.')
-
 
 

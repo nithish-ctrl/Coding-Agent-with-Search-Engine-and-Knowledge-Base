@@ -369,6 +369,7 @@ def MakeYourOwn_tool(docstring : str, name : str, code : str, tool_filepath = to
         toolfile.writelines("\n@tool\n")
         toolfile.writelines(code)
         toolfile.writelines("\n")
+    #Tools.append(name)
     return print(f'The tool is coded into the itended python file with the name {name}.')
 
 
@@ -396,6 +397,3 @@ def Channels_tool():
     return 
 
 Tools = [Search_engine, wiki_knowledge_base, results_log, To_do, Notes_tool, Notes_from_Documents, Resume_Analyzer, Clock_tool, MakeYourOwn_tool]
-
-
-
